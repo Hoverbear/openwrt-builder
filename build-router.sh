@@ -18,14 +18,16 @@ else
     git pull
 fi
 
-# Copy the config
-cp $CONFIG .config
-
 # Build the image.
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-# Run make commands
+# Prereqs
 make defconfig
 make prereq
+
+# Copy the config
+cp $CONFIG .config
+
+# Build
 make
